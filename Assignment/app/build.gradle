@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.test.enbdtest"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "com.bins.tryz.runner.UiRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.appCompat
+    implementation rootProject.ext.kotlinStdLib
+    implementation rootProject.ext.ktxCore
+    implementation rootProject.ext.appCompat
+    implementation rootProject.ext.legacySupport
+    implementation rootProject.ext.constraintLayout
+    implementation rootProject.ext.recyclerView
+    implementation rootProject.ext.material
+    implementation rootProject.ext.retrofit
+    implementation rootProject.ext.retrofitGsonConverter
+    implementation rootProject.ext.retrofitCoroutinesConverter
+    implementation rootProject.ext.retrofitLoggingInterceptors
+    implementation rootProject.ext.lifecycleExtensions
+    implementation rootProject.ext.glide
+    implementation(rootProject.ext.glideOkhttp) {
+        exclude group: 'glide-parent'
+    }
+    implementation rootProject.ext.legacySupport
+    implementation rootProject.ext.shimmer
+
+    //coroutines
+    implementation rootProject.ext.coroutines
+    implementation rootProject.ext.coroutinesAndroid
+    //navigation
+    implementation rootProject.ext.navigationFragment
+    implementation rootProject.ext.navigationui
+    implementation rootProject.ext.navigationFragmentKtx
+    implementation rootProject.ext.navigationuiKtx
+
+    implementation rootProject.ext.dagger
+    implementation rootProject.ext.daggerLib
+    implementation rootProject.ext.dagarSupport
+    kapt rootProject.ext.daggerCompilerKt
+    kapt rootProject.ext.daggerAnotationProcesserKt
+
+
+    //testing library
+    kaptAndroidTest rootProject.ext.daggerCompilerKt
+    kaptAndroidTest rootProject.ext.daggerAnotationProcesserKt
+
+    androidTestImplementation rootProject.ext.dagger
+
+    testImplementation rootProject.ext.junit
+    testImplementation  rootProject.ext.testCore
+
+    androidTestImplementation rootProject.ext.testJunit
+    androidTestImplementation rootProject.ext.testRules
+    androidTestImplementation rootProject.ext.expresso
+    androidTestImplementation rootProject.ext.testTruth
+    androidTestImplementation rootProject.ext.googleTestTruth
+    androidTestImplementation rootProject.ext.testRunner
+    androidTestImplementation rootProject.ext.expressoContrib
+
+    androidTestImplementation(rootProject.ext.mockwebserver) {
+        exclude group: "com.squareup.okhttp3"
+    }
+    testImplementation rootProject.ext.mockitoCoere
+    testImplementation rootProject.ext.mockk
+
+    implementation project(':data')
+}
