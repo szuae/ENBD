@@ -14,10 +14,10 @@ class PixabayRepoImpl(private val api: PixabayRepoApi) : PixabayRepository {
 
     private var mapper = ResponseDataToDomainEntityMapper()
 
-    override suspend fun getPixabayRepos(searchParam: String, pageNo: Int): ReceiveChannel<DataEntity<List<RepoEntity>>> {
+    override suspend fun getPixabayRepos(apiKey: String, searchParam: String, pageNo: Int): ReceiveChannel<DataEntity<List<RepoEntity>>> {
         return GlobalScope.produce {
             try {
-                val repoResponse = api.getPixabayRepos(BuildConfig.API_KEY,searchParam,BuildConfig.ITEM_PER_PAGE.toInt(),pageNo).await()
+                val repoResponse = api.getPixabayRepos(apiKey,searchParam,BuildConfig.ITEM_PER_PAGE.toInt(),pageNo).await()
                 send(DataEntity.SUCCESS(mapper.mapTo(repoResponse)))
             } catch (e: Exception) {
                 send(DataEntity.ERROR(""+e.message))

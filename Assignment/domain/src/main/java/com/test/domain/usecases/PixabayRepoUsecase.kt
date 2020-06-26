@@ -5,6 +5,6 @@ import com.test.domain.entity.RepoEntity
 import kotlinx.coroutines.channels.ReceiveChannel
 
 interface PixabayRepoUsecase {
-    suspend fun getPixabayRepos(searchParam: String, pageNo: Int): ReceiveChannel<DataEntity<List<RepoEntity>>>
+    suspend fun getPixabayRepos(apiKey: String, searchParam: String, pageNo: Int): ReceiveChannel<DataEntity<List<RepoEntity>>>
 
 }

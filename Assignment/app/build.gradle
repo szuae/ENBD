@@ -29,6 +29,14 @@ android {
             buildConfigField "String", "BASE_URL", "\"https://pixabay.com/\""
         }
     }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8

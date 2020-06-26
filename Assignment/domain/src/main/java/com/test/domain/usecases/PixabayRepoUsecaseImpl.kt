@@ -7,7 +7,7 @@ import kotlinx.coroutines.channels.ReceiveChannel
 
 
 class PixabayRepoUsecaseImpl(private val PixabayRepository: PixabayRepository): PixabayRepoUsecase {
-    override suspend fun getPixabayRepos(searchParam: String, pageNo: Int): ReceiveChannel<DataEntity<List<RepoEntity>>> {
-        return PixabayRepository.getPixabayRepos(searchParam, pageNo)
+    override suspend fun getPixabayRepos(apiKey: String, searchParam: String, pageNo: Int): ReceiveChannel<DataEntity<List<RepoEntity>>> {
+        return PixabayRepository.getPixabayRepos(apiKey, searchParam, pageNo)
     }
 }

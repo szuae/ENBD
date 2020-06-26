@@ -3,6 +3,7 @@ package com.test.enbdtest.ui.main
 import androidx.lifecycle.MutableLiveData
 import com.test.domain.usecases.PixabayRepoUsecase
 import com.test.enbdtest.BaseViewModel
+import com.test.enbdtest.Keys
 import com.test.enbdtest.entity.Data
 import com.test.enbdtest.entity.PixabayRepo
 import com.test.enbdtest.mapper.DomainToPresentationMapper
@@ -23,7 +24,7 @@ class MainViewModel @Inject constructor(private var useCase : PixabayRepoUsecase
             dataList.postValue(dataList.value)
         }else {
             launch {
-                val deviceInfo = useCase.getPixabayRepos(searchParam, pageNo)
+                val deviceInfo = useCase.getPixabayRepos(Keys.apiKey(),searchParam, pageNo)
                 deviceInfo.consumeEach { response ->
                     val mappedResponse = mapper.mapTo(response)
                     withContext(Dispatchers.Main) {
