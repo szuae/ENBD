@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class RepoResponse(
     @SerializedName("id") var id: Int,
-
     @SerializedName("tags") var tags: String,
     @SerializedName("previewURL") var previewURL: String,
     @SerializedName("previewWidth") var previewWidth: Int,
