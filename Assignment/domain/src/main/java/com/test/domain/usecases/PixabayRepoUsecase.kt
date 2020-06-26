@@ -1,4 +1,10 @@
 package com.test.domain.usecases
 
-class PixabayRepoUsecase {
+import com.test.domain.entity.DataEntity
+import com.test.domain.entity.RepoEntity
+import kotlinx.coroutines.channels.ReceiveChannel
+
+interface PixabayRepoUsecase {
+    suspend fun getPixabayRepos(): ReceiveChannel<DataEntity<List<RepoEntity>>>
+
 }
