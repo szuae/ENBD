@@ -21,6 +21,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_KEY", "\"17218098-3d64dfbb28965e7994ce6e69f\""
+            buildConfigField "String", "ITEM_PER_PAGE", "\"20\""
+        }
+        debug {
+            debuggable true
+            buildConfigField "String", "API_KEY", "\"17218098-3d64dfbb28965e7994ce6e69f\""
+            buildConfigField "String", "ITEM_PER_PAGE", "\"20\""
+
         }
     }
 }

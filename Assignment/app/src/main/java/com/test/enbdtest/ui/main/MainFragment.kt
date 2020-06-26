@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.test.enbdtest.R
 import com.test.enbdtest.ViewModelProviderFactory
+import com.test.enbdtest.entity.Data
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -25,8 +26,9 @@ class MainFragment : DaggerFragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPixabayRepos(false)
-        Log.e("saif",viewModel.getData().toString())
+        viewModel.getPixabayRepos(false,"apple", 1)
+
+        Log.e("saif", viewModel.getData().value.toString())
     }
 
     override fun onAttach(context: Context) {

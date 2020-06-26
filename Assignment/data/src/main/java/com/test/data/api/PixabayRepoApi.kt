@@ -5,9 +5,10 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-import retrofit2.http.QueryMap
-
 interface PixabayRepoApi {
     @GET("/api/")
-    fun getPixabayRepos(): Deferred<List<RepoResponse>>
+    fun getPixabayRepos(@Query("key")  apiKey: String,
+                        @Query("q") searchParam: String,
+                        @Query("per_page") itemPerPage: Int,
+                        @Query("page") pageNo: Int): Deferred<List<RepoResponse>>
 }

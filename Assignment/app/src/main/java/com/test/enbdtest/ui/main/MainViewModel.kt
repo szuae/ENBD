@@ -18,12 +18,12 @@ class MainViewModel @Inject constructor(private var useCase : PixabayRepoUsecase
     private val mapper  = DomainToPresentationMapper()
     private var dataList = MutableLiveData<Data<List<PixabayRepo>>>()
 
-    fun getPixabayRepos(fetchFromServer: Boolean) {
+    fun getPixabayRepos(fetchFromServer: Boolean, searchParam: String, pageNo: Int) {
         if(dataList.value != null && !fetchFromServer) {
             dataList.postValue(dataList.value)
         }else {
             launch {
-                val deviceInfo = useCase.getPixabayRepos()
+                val deviceInfo = useCase.getPixabayRepos(searchParam, pageNo)
                 deviceInfo.consumeEach { response ->
                     val mappedResponse = mapper.mapTo(response)
                     withContext(Dispatchers.Main) {

@@ -44,6 +44,6 @@ class NetworkModule {
     }
 
     private fun getBaseURl():String{
-        return "https://pixabay.com/"
+        return BuildConfig.BASE_URL
     }
 }
