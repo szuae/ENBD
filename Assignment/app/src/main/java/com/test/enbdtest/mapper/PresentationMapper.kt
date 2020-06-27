@@ -5,7 +5,7 @@ import com.test.domain.entity.RepoEntity
 import com.test.enbdtest.entity.Data
 import com.test.enbdtest.entity.PixabayRepo
 
-class DomainToPresentationMapper {
+class PresentationMapper {
     fun mapTo(data: DataEntity<List<RepoEntity>>): Data<List<PixabayRepo>> {
         return when (data) {
             is DataEntity.SUCCESS -> Data.SUCCESS(data.data?.let { mapToList(it) })
@@ -25,7 +25,10 @@ class DomainToPresentationMapper {
         webformatURL = response.webformatURL,
         webformatWidth = response.webformatWidth,
         webformatHeight = response.webformatHeight,
-        likes = response.likes,
-        comments = response.comments
-    )
+        largeImageURL= response.largeImageURL,
+        comments = response.comments,
+        views = response.views,
+        downloads = response.downloads,
+        favorites = response.favorites,
+        likes = response.likes)
 }

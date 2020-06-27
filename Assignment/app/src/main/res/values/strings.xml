@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ENBDTest</string>
+    <string name="sometingWentWrong">something went wrong, please try later!</string>
+    <string name="details">Details</string>
+    <string name="viewDetails">Views : %d   Downloads : %d</string>
+    <string name="searchHint">Search...</string>
+
+    <string name="likeCount">Likes : %d</string>
+    <string name="commentsCount">Comments : %d</string>
 </resources>

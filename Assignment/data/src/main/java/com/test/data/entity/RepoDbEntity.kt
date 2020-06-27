@@ -1,7 +1,12 @@
-package com.test.domain.entity
+package com.test.data.entity
 
-data class RepoEntity(
-    var id: Int = 0,
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
+
+@Entity(tableName = "PixbayResponseTable")
+data class RepoDbEntity(
+    @PrimaryKey var id: Int = 0,
     var tags: String,
     var previewURL: String,
     var previewWidth: Int,
@@ -14,5 +19,4 @@ data class RepoEntity(
     var downloads: Int,
     var favorites: Int,
     var likes: Int,
-    var comments: Int
-)
+    var comments: Int)

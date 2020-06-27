@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -36,6 +36,9 @@ android {
         }
     }
 
+    androidExtensions {
+        experimental = true
+    }
 
     compileOptions {
         sourceCompatibility = 1.8
@@ -77,18 +80,17 @@ dependencies {
     //coroutines
     implementation rootProject.ext.coroutines
     implementation rootProject.ext.coroutinesAndroid
-    //navigation
-    implementation rootProject.ext.navigationFragment
-    implementation rootProject.ext.navigationui
-    implementation rootProject.ext.navigationFragmentKtx
-    implementation rootProject.ext.navigationuiKtx
 
     implementation rootProject.ext.dagger
     implementation rootProject.ext.daggerLib
     implementation rootProject.ext.dagarSupport
     kapt rootProject.ext.daggerCompilerKt
     kapt rootProject.ext.daggerAnotationProcesserKt
+    implementation rootProject.ext.lifecycleRuntime
 
+    implementation rootProject.ext.lifecycleViewmodel
+    implementation rootProject.ext.lifecycleRuntime
+    implementation rootProject.ext.lifecycleLivedata
 
     //testing library
     kaptAndroidTest rootProject.ext.daggerCompilerKt

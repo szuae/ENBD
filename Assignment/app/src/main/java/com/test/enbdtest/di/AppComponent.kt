@@ -2,7 +2,7 @@ package com.test.enbdtest.di
 
 import com.test.enbdtest.PixabayApplication
 import com.test.enbdtest.di.scopes.AppScoped
-import com.test.enbdtest.ui.di.MainFragmentBuilderModule
+import com.test.enbdtest.ui.di.MainActivityBuilderModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -26,11 +26,10 @@ import javax.inject.Singleton
 @AppScoped
 @Component(modules = [
     AndroidSupportInjectionModule::class,
-    MainFragmentBuilderModule::class,
     NetworkModule::class,
-    ViewModelFactoryModule::class
-]
-)
+    PixBayModule::class,
+    ViewModelFactoryModule::class,
+    MainActivityBuilderModule::class ])
 interface AppComponent : AndroidInjector<PixabayApplication> {
 
     @Component.Builder
@@ -42,6 +41,8 @@ interface AppComponent : AndroidInjector<PixabayApplication> {
          */
         @BindsInstance
         fun application(application: PixabayApplication) : Builder
+
+        fun pixBayModule(pixbayModule: PixBayModule): Builder
 
         fun build() : AppComponent
     }

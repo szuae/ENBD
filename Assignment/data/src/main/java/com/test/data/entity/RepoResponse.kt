@@ -9,7 +9,11 @@ data class RepoResponse(
     @SerializedName("previewWidth") var previewWidth: Int,
     @SerializedName("previewHeight") var previewHeight: Int,
     @SerializedName("webformatURL") var webformatURL: String,
+    @SerializedName("largeImageURL") var largeImageURL: String,
     @SerializedName("webformatWidth") var webformatWidth: Int,
     @SerializedName("webformatHeight") var webformatHeight: Int,
+    @SerializedName("views") var views: Int,
+    @SerializedName("downloads") var downloads: Int,
+    @SerializedName("favorites") var favorites: Int,
     @SerializedName("likes") var likes: Int,
     @SerializedName("comments") var comments: Int)

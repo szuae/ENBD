@@ -47,6 +47,11 @@ dependencies {
     kapt rootProject.ext.daggerCompilerKt
     kapt rootProject.ext.daggerAnotationProcesserKt
 
+    api rootProject.ext.room
+    api rootProject.ext.rxRoom
+    kapt rootProject.ext.roomCompiler
+    api rootProject.ext.coroutinesReactive
+
     //testing library
     kaptTest rootProject.ext.daggerCompilerKt
 

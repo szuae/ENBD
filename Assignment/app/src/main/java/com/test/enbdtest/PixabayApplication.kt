@@ -1,6 +1,7 @@
 package com.test.enbdtest
 
 import com.test.enbdtest.di.DaggerAppComponent
+import com.test.enbdtest.di.PixBayModule
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
@@ -14,6 +15,7 @@ import dagger.android.support.DaggerApplication
 class PixabayApplication : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication>? {
-        return DaggerAppComponent.builder().application(this).build()
+        return DaggerAppComponent.builder().application(this)
+            .pixBayModule(PixBayModule(this)).build()
     }
 }
