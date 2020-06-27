@@ -20,7 +20,7 @@ class PixabayRepoRemote(private val api: PixabayRepoApi) : PixbayDataStore {
             try {
                 val repoResponse =  api.getPixabayRepos(apiKey,searchParam,
                     BuildConfig.ITEM_PER_PAGE.toInt(),pageNo).await()
-                send(DataEntity.SUCCESS(mapper.map(repoResponse.hits)))
+                send(DataEntity.SUCCESS(mapper.map(searchParam,repoResponse.hits)))
             } catch (e: Exception) {
                 send(DataEntity.ERROR(""+e.message))
             }

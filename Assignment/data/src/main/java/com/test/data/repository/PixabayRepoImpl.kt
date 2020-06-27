@@ -1,7 +1,9 @@
 package com.test.data.repository
 
+import android.util.Log
 import com.test.data.BuildConfig
 import com.test.data.api.PixabayRepoApi
+import com.test.data.entity.RepoDbEntity
 import com.test.data.mapper.ReponseToDomainMapper
 import com.test.data.mapper.ResponseToDbMapper
 import com.test.data.util.NetworkUtil
@@ -31,7 +33,8 @@ class PixabayRepoImpl(private val remote: PixabayRepoRemote,
                 launch {
                     when (val pixbayResponse = remote.getAllPixbay(scope,apiKey, searchParam, pageNo).receive()) {
                         is DataEntity.SUCCESS -> {
-                            cache.saveAll(pixbayResponse.data)
+
+                            cache.saveAll(filterData(pixbayResponse.data))
                             send(DataEntity.SUCCESS(mapper.mapDbToDomain(pixbayResponse)))
                         }
                         is DataEntity.ERROR -> {
@@ -41,5 +44,14 @@ class PixabayRepoImpl(private val remote: PixabayRepoRemote,
                 }
             }
         }
+    }
+
+    private fun filterData(data: List<RepoDbEntity>?) : List<RepoDbEntity>{
+        var filteredList = ArrayList<RepoDbEntity>()
+        data?.listIterator()?.forEach {
+            if(it.tags.filter { it == ',' }.count() <3)
+                filteredList.add(it)
+        }
+        return filteredList
     }
 }

@@ -12,7 +12,7 @@ class PixabayRepoCache(dataBase: PixbayDataBase) : PixbayDataStore {
     private var pixBayRepoDao = dataBase.getPixBayRepoDao()
 
     override suspend fun getAllPixbay(scope: CoroutineScope,apiKey: String, searchParam: String, pageNo: Int): ReceiveChannel<DataEntity<List<RepoDbEntity>>> {
-        val mappedValue = pixBayRepoDao.getAllRecords().map {
+        val mappedValue = pixBayRepoDao.getAllRecords(searchParam).map {
             DataEntity.SUCCESS(it)
         }
         return mappedValue.openSubscription()

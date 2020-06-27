@@ -7,8 +7,8 @@ import io.reactivex.Flowable
 @Dao
 interface PixBayRepoDao {
 
-    @Query("Select * from PixbayResponseTable")
-    fun getAllRecords(): Flowable<List<RepoDbEntity>>
+    @Query("Select * from PixbayResponseTable where searchParam = :searchParam")
+    fun getAllRecords(searchParam: String): Flowable<List<RepoDbEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveAllRecords(treadingRepoList: List<RepoDbEntity>) : List<Long>

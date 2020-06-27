@@ -5,12 +5,12 @@ import com.test.data.entity.RepoResponse
 import com.test.domain.entity.RepoEntity
 
 class ResponseToDbMapper {
-    fun map(response: List<RepoResponse>?) :List<RepoDbEntity>  =mapToDbEntityList(response)
+    fun map(searchParam: String, response: List<RepoResponse>?) :List<RepoDbEntity>  =mapToDbEntityList(searchParam,response)
 
-    private fun mapToDbEntityList(responses: List<RepoResponse>?)
-            : List<RepoDbEntity> = responses?.map { mapToDbEntity(it) } ?: emptyList()
+    private fun mapToDbEntityList(searchParam: String, responses: List<RepoResponse>?)
+            : List<RepoDbEntity> = responses?.map { mapToDbEntity(searchParam, it) } ?: emptyList()
 
-    private fun mapToDbEntity(response: RepoResponse): RepoDbEntity = RepoDbEntity(
+    private fun mapToDbEntity(searchParam: String, response: RepoResponse): RepoDbEntity = RepoDbEntity(
         id = response.id,
         tags = response.tags,
         previewURL = response.previewURL,
@@ -24,5 +24,6 @@ class ResponseToDbMapper {
         downloads = response.downloads,
         favorites = response.favorites,
         likes = response.likes,
-        largeImageURL = response.largeImageURL)
+        largeImageURL = response.largeImageURL,
+        searchParam = searchParam)
 }

@@ -19,4 +19,5 @@ data class RepoDbEntity(
     var downloads: Int,
     var favorites: Int,
     var likes: Int,
-    var comments: Int)
+    var comments: Int,
+    var searchParam: String)
